@@ -1,0 +1,17 @@
+@use './constants/constants.scss' as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-default;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+.wrapper {
+  max-width: 880px;
+  margin: auto;
+}

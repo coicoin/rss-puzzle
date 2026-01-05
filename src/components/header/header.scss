@@ -1,0 +1,110 @@
+@use 'src/constants/constants.scss' as *;
+
+.header {
+  transition: opacity 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+
+.header__wrapper {
+  padding: 10px 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header_hidden {
+  display: none;
+}
+
+.options-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.options-menu__label {
+  padding-right: 10px;
+  font-size: $font-size;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  color: #555;
+}
+
+@media (max-width: 500px) {
+  .options-menu__label {
+    font-size: $font-size-small;
+  }
+}
+
+.options-menu__button {
+  width: 80px;
+  height: 28px;
+  padding-left: 10px;
+  text-align: center;
+  color: #555;
+  border-radius: 8px;
+  border: 1px solid #ededed;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+
+  &:hover {
+    border-color: #fff7ff;
+  }
+}
+
+@media (max-width: 500px) {
+  .options-menu__button {
+    width: 40px;
+    height: 20px;
+  }
+}
+
+.header__navigation {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.navigation-button {
+  border: 1px solid transparent;
+  //background: #feffff;
+  background: transparent;
+  border-radius: 8px;
+
+  .navigation__ico-img {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    transition:
+      border-color,
+      transform 0.2s ease;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+
+    &:active {
+      transform: scale(0.94);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .navigation__ico-img {
+      height: 16px;
+      width: 16px;
+    }
+  }
+}
+
+.navigation-button_off {
+  transform: scale(0.93);
+  opacity: 0.3;
+}
