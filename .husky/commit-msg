@@ -1,0 +1,9 @@
+npx --no -- commitlint --edit ${1} || {
+  echo ""
+  echo "Commit message invalid!"
+  echo "It should follow Conventional Commits:"
+  echo "<feat|fix|docs|chore|style|refactor|test|perf>: <commit message>"
+  echo "Examples:"
+  echo "  feat: add login page"
+  exit 1
+}
