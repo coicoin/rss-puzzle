@@ -7,14 +7,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 16px;
 }
 
 .auth__form {
-  width: min(420px, 90vw);
-  min-height: 340px;
+  width: 100%;
+  max-width: 520px;
+  min-height: 30vh;
+  max-height: 90vh;
   padding: 32px;
   background: rgba(255, 255, 255);
   border-radius: 16px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -164,52 +169,5 @@
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-  }
-}
-
-.logout__button.logout_hidden {
-  display: none;
-}
-
-.logout__button {
-  display: inline-flex;
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  z-index: 10;
-  cursor: pointer;
-  border: none;
-  background: #e0f4f7;
-  padding: 8px;
-  border-radius: 50%;
-  box-shadow:
-    0 2px 6px rgba(13, 96, 111, 0.25),
-    inset 0 2px 6px rgba(255, 255, 255, 0.3);
-  transition:
-    background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-
-  &:hover {
-    background-color: #cceaf0;
-    box-shadow: 0 2px 8px rgba(13, 96, 111, 0.5);
-  }
-
-  &:active {
-    background-color: #b3e0e8;
-    outline: none;
-    transform: scale(0.94);
-    box-shadow: 0 2px 12px rgba(13, 96, 111, 0.2);
-  }
-
-  & .ico-img {
-    height: 32px;
-    width: 32px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-
-    &:hover {
-      transform: scale(0.98);
-    }
   }
 }

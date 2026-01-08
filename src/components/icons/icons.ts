@@ -1,28 +1,28 @@
 import type { ElementOptions } from 'src/sources/types';
 import { HtmlFactory } from 'src/builder/html-factory';
+import { BASE_URL } from 'src/router/routes';
 
 export const NAV_ICON_PATHS = {
-  VOLUME: '/img/icons/nav/volume-on.png',
-  TRANSLATE: '/img/icons/nav/translate.png',
-  AUDIO: '/img/icons/nav/audio.png',
-  PICTURE: '/img/icons/nav/picture.png',
+  VOLUME: `${BASE_URL}img/icons/nav/volume-on.png`,
+  TRANSLATE: `${BASE_URL}img/icons/nav/translate.png`,
+  AUDIO: `${BASE_URL}img/icons/nav/audio.png`,
+  PICTURE: `${BASE_URL}img/icons/nav/picture.png`,
 } as const;
 
 export const MAIN_PAGE_ICON_PATHS = {
-  VOLUME: '/img/icons/main-page/audio.gif',
-  AUDIO_HINT: '/img/icons/main-page/audio-hint.svg',
+  AUDIO_HINT: `${BASE_URL}img/icons/main-page/audio-hint.svg`,
 } as const;
 
 export const STATISTIC_ICON_PATHS = {
-  AUDIO_PLAY: '/img/icons/statistic/play-button.png',
-  AUDIO_PAUSE: '/img/icons/statistic/pause-button.png',
+  AUDIO_PLAY: `${BASE_URL}img/icons/statistic/play-button.png`,
+  AUDIO_PAUSE: `${BASE_URL}img/icons/statistic/pause-button.png`,
 } as const;
 
 export const AUTH_ICON_PATHS = {
-  LOGOUT: '/img/icons/logout.png',
+  LOGOUT: `${BASE_URL}img/icons/logout.png`,
 } as const;
 
-export default class Icon {
+export class Icon {
   private img: HTMLImageElement;
 
   constructor(options: ElementOptions<'img'>) {

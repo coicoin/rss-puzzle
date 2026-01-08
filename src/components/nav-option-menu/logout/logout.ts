@@ -1,9 +1,10 @@
+import './logout.scss';
 import { Button } from 'src/components/buttons/button';
 import { AuthService } from 'src/services/auth-service';
-import Icon, { AUTH_ICON_PATHS } from '../buttons/icon/icons';
 import type { Listener } from 'src/sources/types';
+import { Icon, AUTH_ICON_PATHS } from 'src/components/icons/icons';
 
-export class NavOptionMenu {
+export class Logout {
   public createLogoutButton = (): HTMLButtonElement => {
     const button: HTMLButtonElement = new Button(
       {

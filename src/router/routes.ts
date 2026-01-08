@@ -1,3 +1,6 @@
+export const BASE_URL: string = import.meta.env.BASE_URL;
+export const BASE_URL_WITHOUT_SLASH = BASE_URL.replace(/\/$/, '');
+
 export const ROUTES = {
   START_PAGE: '/',
   MAIN_PAGE: '/main',

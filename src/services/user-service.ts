@@ -6,7 +6,7 @@ export class UserService {
     ${window.localStorage.getItem(CONSTANTS.SURNAME_KEY) ?? ''}`.trim();
   }
 
-  public static isAuthenticatied(): boolean {
+  public static isAuthenticated(): boolean {
     return Boolean(
       window.localStorage.getItem(CONSTANTS.FIRST_NAME_KEY) && window.localStorage.getItem(CONSTANTS.SURNAME_KEY),
     );

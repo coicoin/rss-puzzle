@@ -1,22 +1,66 @@
 @use 'src/constants/constants.scss' as *;
 
 .header {
-  transition: opacity 0.3s ease;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: clamp(50px, 8vh, 60px);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  transition:
+    transform 0.3s ease,
+    padding 0.3s ease;
+  padding: 0 clamp(15px, 5%, 20px) 0 clamp(40px, 10%, 60px);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 clamp(10px, 4%, 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-wrap: wrap-reverse;
+    padding: clamp(2px, 2%, 4px) clamp(2px, 2%, 4px);
+    gap: clamp(8px, 2%, 10px);
+    height: auto;
+    align-items: flex-start;
+  }
+}
+
+.header__logout {
+  margin-left: clamp(10px, 2%, 15px);
+  justify-self: flex-end;
+}
+
+@media (max-width: 480px) {
+  .header__logout {
+    flex: 0 1 auto;
+    margin: clamp(1px, 1%, 2px) auto;
+  }
 }
 
 .header__wrapper {
-  padding: 10px 0;
-  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(10px, 3%, 15px);
+  transition: transform 1s ease;
+  gap: clamp(8px, 2vw, 10px);
+}
+
+@media (max-width: 480px) {
+  .header__wrapper {
+    flex-wrap: wrap;
+    gap: clamp(8px, 2%, 10px);
+    padding: clamp(2px, 1.5%, 3px);
+  }
 }
 
 .header_hidden {
@@ -25,67 +69,85 @@
 
 .options-menu {
   display: flex;
-  gap: 20px;
+  gap: clamp(8px, 2vw, 10px);
+  min-width: clamp(160px, 20%, 200px);
 }
 
-.options-menu__label {
-  padding-right: 10px;
-  font-size: $font-size;
-  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-  color: #555;
-}
-
-@media (max-width: 500px) {
-  .options-menu__label {
-    font-size: $font-size-small;
+@media (max-width: 480px) {
+  .options-menu {
+    width: 100%;
+    justify-content: center;
+    gap: clamp(3px, 1vw, 5px);
   }
 }
 
+.options-menu__container {
+  display: flex;
+  gap: clamp(8px, 2vw, 10px);
+  align-items: center;
+  justify-content: center;
+}
+
+.options-menu__label {
+  font-size: clamp($font-size-small, 1.6vw, $font-size);
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  color: #555;
+  text-align: center;
+}
+
 .options-menu__button {
-  width: 80px;
-  height: 28px;
-  padding-left: 10px;
+  width: clamp(50px, 12vw, 60px);
+  height: clamp(24px, 6%, 28px);
+  padding-left: 10%;
   text-align: center;
   color: #555;
   border-radius: 8px;
   border: 1px solid #ededed;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s ease;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     border-color: #fff7ff;
   }
-}
 
-@media (max-width: 500px) {
-  .options-menu__button {
-    width: 40px;
-    height: 20px;
+  &:focus {
+    outline: none;
+    box-shadow: none;
   }
 }
 
 .header__navigation {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  justify-content: flex-end;
+  gap: clamp(10px, 2.5vw, 15px);
+  min-width: clamp(160px, 20%, 200px);
+}
+
+@media (max-width: 480px) {
+  .header__navigation {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .navigation-button {
   border: 1px solid transparent;
-  //background: #feffff;
   background: transparent;
-  border-radius: 8px;
+  border-radius: clamp(6px, 1.2vw, 8px);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 
   .navigation__ico-img {
-    height: 32px;
-    width: 32px;
+    height: clamp(2.8rem, 3rem, 3.2rem);
+    width: clamp(2.8rem, 3rem, 3.2rem);
     cursor: pointer;
     -webkit-user-drag: none;
-    transition:
-      border-color,
-      transform 0.2s ease;
+    transition: transform 0.2s ease;
 
     &:hover {
       transform: scale(0.98);
@@ -93,13 +155,6 @@
 
     &:active {
       transform: scale(0.94);
-    }
-  }
-
-  @media (max-width: 500px) {
-    .navigation__ico-img {
-      height: 16px;
-      width: 16px;
     }
   }
 }

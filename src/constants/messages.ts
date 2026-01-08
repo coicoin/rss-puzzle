@@ -23,7 +23,7 @@ export const messages = {
   error: {
     notValidSymbols: 'Only English letters and "-" are allowed',
     notValidLength: (min: number) => `Min length is ${min}`,
-    firstSymbolIsNotUpperCase: 'First letter should be in upper case',
+    firstSymbolIsNotUpperCase: 'First letter should be a latin symbol in upper case',
     audioError: (error: string) => `Audio error: ${error}`,
   },
 };
