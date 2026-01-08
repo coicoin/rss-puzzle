@@ -1,0 +1,46 @@
+.logout__button.logout_hidden {
+  display: none;
+}
+
+.logout__button {
+  z-index: 10;
+  cursor: pointer;
+  border: none;
+  background: #e0f4f7;
+  border-radius: 50%;
+  height: clamp(3.6rem, 3.8rem, 4rem);
+  width: clamp(3.6rem, 3.8rem, 4rem);
+  min-width: auto;
+  box-shadow:
+    0 2px 6px rgba(13, 96, 111, 0.25),
+    inset 0 2px 6px rgba(255, 255, 255, 0.3);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    height 0.2s ease,
+    width 0.2s ease;
+
+  &:hover {
+    background-color: #cceaf0;
+    box-shadow: 0 2px 8px rgba(13, 96, 111, 0.5);
+  }
+
+  &:active {
+    background-color: #b3e0e8;
+    outline: none;
+    transform: scale(0.94);
+    box-shadow: 0 2px 12px rgba(13, 96, 111, 0.2);
+  }
+
+  & .ico-img {
+    height: clamp(2.2rem, 2.4rem, 2.8rem);
+    width: clamp(2.2rem, 2.4rem, 2.8rem);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(0.98);
+    }
+  }
+}

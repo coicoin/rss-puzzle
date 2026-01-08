@@ -1,6 +1,6 @@
 import { HtmlFactory } from 'src/builder/html-factory';
 import { Component } from 'src/components/component';
-import Icon, { NAV_ICON_PATHS } from 'src/components/buttons/icon/icons';
+import { Icon, NAV_ICON_PATHS } from 'src/components/icons/icons';
 import { getIconNameFromPath } from 'src/sources/utils/icon-utils';
 
 export class NavigationMenu extends Component {

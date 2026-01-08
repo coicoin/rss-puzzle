@@ -44,9 +44,7 @@ export class StartPage extends Component {
       {
         type: 'click',
         listener: () => {
-          if (UserService.getUsername()) {
-            router.navigate(ROUTES.MAIN_PAGE, HISTORY_ACTION.PUSH);
-          }
+          router.navigate(ROUTES.MAIN_PAGE, HISTORY_ACTION.PUSH);
         },
       },
     ).getButton();

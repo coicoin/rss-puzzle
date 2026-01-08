@@ -1,16 +1,17 @@
 import 'src/pages/main-page/main-page.scss';
 import { HtmlFactory } from 'src/builder/html-factory';
 import { Component } from 'src/components/component';
-import Icon, { MAIN_PAGE_ICON_PATHS } from 'src/components/buttons/icon/icons';
 import { Button } from 'src/components/buttons/button';
 import { messages } from 'src/constants/messages';
 import { getIconNameFromPath } from 'src/sources/utils/icon-utils';
 import { shuffle } from 'src/sources/utils/collection-utils';
 import router from 'src/router/router';
 import { HISTORY_ACTION } from 'src/router/history';
-import { ROUTES } from 'src/router/routes';
+import { BASE_URL, ROUTES } from 'src/router/routes';
+import { Icon, MAIN_PAGE_ICON_PATHS } from 'src/components/icons/icons';
 
 export class MainPage extends Component {
+  private readonly BASE_WIDTH = 880;
   private done: string[] = [
     'The woman enjoys riding her bicycle',
     'The woman enjoys riding her bicycle',
@@ -27,10 +28,14 @@ export class MainPage extends Component {
     const mainPage: HTMLDivElement = HtmlFactory.createDiv({
       classNames: ['main-page', 'main-page__puzzle', 'wrapper'],
     });
-    const gameContainer: HTMLDivElement = HtmlFactory.createDiv({ classNames: ['main-page__puzzle__container'] });
-    const puzzleBoard: HTMLDivElement = HtmlFactory.createDiv({ classNames: ['main-page__puzzle__board'] });
+    //const gameContainer: HTMLDivElement = HtmlFactory.createDiv({ classNames: ['main-page__puzzle__container'] });
+    const puzzleBoard: HTMLDivElement = HtmlFactory.createDiv({
+      classNames: ['main-page__puzzle__board'],
+      id: 'main-page__puzzle__board',
+    });
     const puzzleImageWrapper: HTMLDivElement = HtmlFactory.createDiv({
       classNames: ['main-page__puzzle__image__wrapper'],
+      id: 'main-page__puzzle__image__wrapper',
     });
     const puzzleSource: HTMLDivElement = this.configureShuffledPuzzleLine('The woman enjoys riding her bicycle');
 
@@ -66,10 +71,13 @@ export class MainPage extends Component {
     ).getButton();
     puzzleButtons.append(continueButton, checkButton);
 
-    puzzleImageWrapper.append(this.configurePuzzleImage());
-    puzzleBoard.append(puzzleImageWrapper, this.configurePuzzleLines());
-    gameContainer.append(this.configureHintsView(), puzzleBoard, puzzleSource);
-    mainPage.append(gameContainer, puzzleButtons);
+    puzzleImageWrapper.append(this.configurePuzzleImage(), this.configurePuzzleLines());
+    puzzleBoard.append(this.configureHintsView(), puzzleImageWrapper, puzzleSource);
+    //gameContainer.append(, puzzleBoard);
+    mainPage.append(puzzleBoard, puzzleButtons);
+
+    window.addEventListener('resize', () => this.scalePuzzle());
+    window.addEventListener('load', () => this.scalePuzzle());
     return mainPage;
   }
 
@@ -92,7 +100,7 @@ export class MainPage extends Component {
 
   private configurePuzzleImage(): HTMLDivElement {
     const image: HTMLImageElement = new Image();
-    image.src = '/img/background/bg-start.jpg';
+    image.src = `${BASE_URL}img/background/bg-start.jpg`;
     image.classList.add('main-page__puzzle__image');
     image.alt = 'Puzzle image';
     return image;
@@ -124,5 +132,14 @@ export class MainPage extends Component {
       puzzleLine.append(sourceWord);
     }
     return puzzleLine;
+  }
+
+  private scalePuzzle(): void {
+    if (!window.location.pathname.includes(ROUTES.MAIN_PAGE)) return;
+    const board: HTMLElement = document.getElementById('main-page__puzzle__image__wrapper') as HTMLElement;
+    if (!board) return;
+    const scale = Math.min(window.innerWidth / this.BASE_WIDTH, 1);
+    //board.style.setProperty('$puzzle-scale', scale.toString());
+    document.documentElement.style.setProperty('--puzzle-scale', Math.min(scale, 1).toString());
   }
 }

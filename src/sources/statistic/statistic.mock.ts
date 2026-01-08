@@ -1,11 +1,12 @@
 import type { Statistic } from '../statistic/statistic.types';
 import { createStatistic } from '../statistic/statistic.factory';
+import { BASE_URL } from 'src/router/routes';
 
 export class TestData {
   public initData(): Statistic {
     const statistic = createStatistic();
 
-    statistic.pictureLink = '/img/background/bg-start.jpg';
+    statistic.pictureLink = `${BASE_URL}/img/background/bg-start.jpg`;
     statistic.pictureDescription = 'AIVAZOVSKY, Ivan Konstantinovich - The Ninth Wave (1850)';
 
     statistic.known.push(

@@ -1,7 +1,7 @@
 import { HtmlFactory } from 'src/builder/html-factory';
 import { messages } from 'src/constants/messages';
 import type { Statistic, StatisticAnswer, StatisticMedia } from 'src/sources/statistic/statistic.types';
-import Icon, { STATISTIC_ICON_PATHS } from '../buttons/icon/icons';
+import { Icon, STATISTIC_ICON_PATHS } from '../icons/icons';
 
 export class StatisticContent {
   public configureStatisticContent(

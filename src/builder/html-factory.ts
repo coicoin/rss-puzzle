@@ -69,6 +69,10 @@ export class HtmlFactory {
     return HtmlFactory.create('input', options);
   }
 
+  static createLink(options?: Omit<ElementOptions<'a'>, 'tag'>): HTMLElement {
+    return HtmlFactory.create('a', options);
+  }
+
   private static create<T extends keyof HTMLElementTagNameMap>(
     tag: T,
     options?: Omit<ElementOptions<T>, 'tag'>,
